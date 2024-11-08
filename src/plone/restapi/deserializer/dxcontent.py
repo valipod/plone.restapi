@@ -23,6 +23,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from zope.schema import getFields
 from zope.schema.interfaces import ValidationError
 from zope.security.interfaces import IPermission
+from plone.namedfile.file import NamedBlobFile
 
 
 @implementer(IDeserializeFromJson)
@@ -139,7 +140,15 @@ class DeserializeFromJson(OrderingMixin):
                         field_data[name] = value
                         current_value = dm.get()
                         if value != current_value:
-                            should_change = True
+                            if value or current_value:
+                                if isinstance(value, NamedBlobFile) and isinstance(
+                                        current_value, NamedBlobFile):
+                                        if value._blob.open().read() != current_value._blob.open().read():
+                                            should_change = True
+                                else:
+                                    should_change = True
+                            else:
+                                should_change = False
                         elif create and dm.field.defaultFactory:
                             # During content creation we should set the value even if
                             # it is the same from the dm if the current_value was
