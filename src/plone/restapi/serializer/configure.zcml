@@ -8,6 +8,8 @@
   <adapter factory=".dxcontent.SerializeToJson" />
   <adapter factory=".dxcontent.SerializeFolderToJson" />
   <adapter factory=".dxcontent.DexterityObjectPrimaryFieldTarget" />
+  <adapter factory=".dxcontent.LinkObjectPrimaryFieldTarget" />
+
 
   <configure zcml:condition="installed plone.app.contenttypes">
     <adapter factory=".collection.SerializeCollectionToJson" />
@@ -25,6 +27,7 @@
   <adapter factory=".dxfields.DefaultPrimaryFieldTarget" />
   <adapter factory=".dxfields.PrimaryFileFieldTarget" />
   <adapter factory=".dxfields.TextLineFieldSerializer" />
+  <adapter factory=".dxfields.DateTimeFieldSerializer" />
 
   <adapter factory=".blocks.BlocksJSONFieldSerializer" />
   <subscriber

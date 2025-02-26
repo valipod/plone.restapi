@@ -8,6 +8,94 @@ Changelog
 
 .. towncrier release notes start
 
+9.11.0 (2025-01-31)
+-------------------
+
+New features:
+
+
+- Support working copies of the Plone Site. This feature is available when using `plone.app.iterate` 6.1.0 or later. @wesleybl (#1823)
+
+
+9.10.0 (2025-01-27)
+-------------------
+
+New features:
+
+
+- Add a `@login` endpoint to get external login services' links. @erral (#1757)
+- In the `@registry` endpoint, added support for filtering the list of registry records. @Faakhir30 (#1861)
+
+
+Bug fixes:
+
+
+- Changed bad int inputs into 500 Exceptions to 400 BadRequest so they can be filtered out of logs more easily. @djay (#1855)
+- Handle TypeError on querystringsearch as BadRequest. @djay (#1857)
+- Add parse_int to handle all cases of BadRequests from ints passed in. @djay (#1858)
+- In the `@contextnavigation` endpoint, return `"icon": null` for Files with a mimetype not found in the `content_type_registry`, instead of raising `TypeError`. @mamico (#1864)
+- In the `@locking` endpoint, fixed edge cases where the user who owns the lock was not found correctly. @mamico (#1867)
+- Prevent deprecation warnings. @mauritsvanrees (#4090)
+
+
+Internal:
+
+
+- Update CI. @davisagli (#1685)
+
+
+9.9.0 (2024-12-18)
+------------------
+
+New features:
+
+
+- When a Link content item is linked by UID, resolve its URL as the linked target URL for anonymous users. @cekk (#1847)
+
+
+Bug fixes:
+
+
+- Fix resolving paths in deserializer if the target was moved in the same request. @cekk (#1848)
+- Make slate block linkintegrity checking more robust in case data isn't in the expected format. @cekk (#1849)
+- Optimized performance of DexterityObjectPrimaryFieldTarget adapter. @maurits (#1851)
+
+
+Internal:
+
+
+- Fix time-dependence of tests. @davisagli (#1850)
+
+
+9.8.5 (2024-11-25)
+------------------
+
+Bug fixes:
+
+
+- Fix log in after changing email when "email as login" is enabled
+  [erral] (#1835)
+- Fix tests after #1839 and plone.app.event#411
+  [erral] (#1844)
+- Do not change request during relation fields serialization
+  [cekk] (#1845)
+
+
+Internal:
+
+
+- Test that recurrence serialization provides correct data
+  [erral] (#1809)
+- Additional tests to login name changes
+  [erral] (#1840)
+
+
+Documentation:
+
+
+- `html_use_opensearch` value must not have a trailing slash. Clean up comments. @stevepiercy (#1846)
+
+
 9.8.4 (2024-11-05)
 ------------------
 
