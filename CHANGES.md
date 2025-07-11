@@ -9,6 +9,32 @@
 
 <!-- towncrier release notes start -->
 
+## 9.15.1 (2025-06-16)
+
+
+### Bug fixes:
+
+- Optimize `@navroot` endpoint: fields `items` and `@components` are no longer computed/returned. @pgrunewald #1841
+- In the `@search` service, fix an `AttributeError` that could occur with bad input. @davisagli #1898
+- In the `@controlpanels` service, removed empty `data` and `schema` from special control panels that do not use a schema (`dexterity-types` and `rules`). @davisagli #1927
+
+## 9.15.0 (2025-06-10)
+
+
+### New features:
+
+- Include all summary fields when serializing `next_item` and `previous_item`. @davisagli 
+
+
+### Bug fixes:
+
+- In the `RelationListFieldSerializer`, fix `list` used a default argument. @ale-rt #1922
+
+
+### Documentation:
+
+- Fix contributor documentation. @davisagli 
+
 ## 9.14.0 (2025-05-12)
 
 
